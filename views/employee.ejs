@@ -1,0 +1,45 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <% nav.forEach(function(item) { %>
+                    <li><a href="<%= item.link %>"><%= item.name %></a></li>
+                <% }); %>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title"><%= title %></h1>
+        <form action="<%= id ? '/routing/update/' + id : '/routing/add' %>" method="POST" class="employee-form">
+            <input type="hidden" name="id" value="<%= employee.id || '' %>">
+            
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="<%= employee.name || '' %>" required>
+            
+            <label for="designation">Designation:</label>
+            <input type="text" id="designation" name="designation" value="<%= employee.designation || '' %>" required>
+            
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" value="<%= employee.location || '' %>" required>
+            
+            <label for="salary">Salary:</label>
+            <input type="number" id="salary" name="salary" value="<%= employee.salary || '' %>" required>
+
+            <button type="submit" class="submit-btn"><%= id ? 'Update Employee' : 'Add Employee' %></button>
+        </form>
+    </div>
+</body>
+</html>
+
+
